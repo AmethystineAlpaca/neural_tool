@@ -31,6 +31,7 @@ class GCNPreprocessor:
                 else:
                     tfidf = self.get_tf_idf(self.vocabs[j], self.vocabs[i])
                     adjacent_matrix[i][j] = tfidf
+            adjacent_matrix[i][i] = 1
         self.adjacent_matrix = adjacent_matrix
         return adjacent_matrix
 
