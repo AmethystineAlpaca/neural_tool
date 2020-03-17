@@ -5,7 +5,8 @@ this classifier has been modified in a rush from my NER extractor, sorry if some
 import transformers
 import torch
 from transformers import BertForSequenceClassification, AdamW, BertTokenizer, get_linear_schedule_with_warmup
-from tqdm.notebook import trange as tnrange
+# from tqdm.notebook import trange as tnrange
+from tqdm import trange as tnrange
 
 
 class BertClassifier:
@@ -129,19 +130,22 @@ class TestArgs:
     def __init__(self):
         self.tags = {0, 1}
 
-        self.epoch = 4
+        self.epoch = 1
         self.batch_size = 16
-        self.max_seq = 256
+        self.max_seq = 10
 
         # warm_up
         # 7613 5709
-        self.warmup_steps = 5709*4//16//10
-        self.num_training_steps = 5709*4//16
+        # self.warmup_steps = 5709*4//16//10
+        # self.num_training_steps = 5709*4//16
+        self.warmup_steps = 100
+        self.num_training_steps = 10
+        
 
         # gradient clip
         self.max_grad_norm = 1
 
-        self.device = 'gpu'
+        self.device = 'cpu'
 
 
 if __name__ == "__main__":

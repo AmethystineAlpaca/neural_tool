@@ -6,5 +6,6 @@ setup(
     description='A useful module',
     author='ming',
     # packages=['torch'],  # same as name
-    install_requires=['torch'],  # external packages as dependencies
+    # external packages as dependencies
+    install_requires=['torch', 'pandas', 'sklearn', 'transformers', 'nltk'],
 )
